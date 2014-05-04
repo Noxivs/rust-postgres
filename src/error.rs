@@ -391,11 +391,9 @@ impl fmt::Show for PostgresConnectError {
                 write!(fmt.buf, "Unable to open connection to server: {}", err),
             PgConnectDbError(ref err) => err.fmt(fmt),
             MissingPassword =>
-                fmt.buf.write_str("The server requested a password but none \
-                                   was provided"),
+                fmt.buf.write_str("The server requested a password but none was provided"),
             UnsupportedAuthentication =>
-                fmt.buf.write_str("The server requested an unsupporeted \
-                                   authentication method"),
+                fmt.buf.write_str("The server requested an unsupporeted authentication method"),
             NoSslSupport =>
                 fmt.buf.write_str("The server does not support SSL"),
             SslError(ref err) =>
@@ -546,11 +544,9 @@ impl fmt::Show for PostgresError {
             PgDbError(ref err) => err.fmt(fmt),
             PgStreamError(ref err) => err.fmt(fmt),
             PgStreamDesynchronized => fmt.buf.write_str(
-                "Communication with the server has desynchronized due to an \
-                 earlier IO error"),
+                "Communication with the server has desynchronized due to an earlier IO error"),
             PgWrongConnection => fmt.buf.write_str(
-                "A statement was executed with a connection it was not \
-                 prepared with"),
+                "A statement was executed with a connection it was not prepared with"),
             PgWrongParamCount { expected, actual } =>
                 write!(fmt.buf, "Expected {} parameters but got {}", expected,
                        actual),
