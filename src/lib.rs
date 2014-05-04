@@ -643,8 +643,7 @@ impl InnerPostgresConnection {
             Some(name) => return Ok(name.clone()),
             None => {}
         }
-        let name = try!(self.quick_query(format!("SELECT typname FROM pg_type \
-                                                  WHERE oid={}", oid)))
+        let name = try!(self.quick_query(format!("SELECT typname FROM pg_type WHERE oid={}", oid)))
             .move_iter().next().unwrap().move_iter().next().unwrap().unwrap();
         self.unknown_types.insert(oid, name.clone());
         Ok(name)
